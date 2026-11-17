@@ -1,4 +1,8 @@
-import { getAvailableCoffees, getUpcomingCoffees, SCORE_DISCLAIMER } from "@/features/catalog/data/catalog.repository";
+import {
+  getAvailableCoffees,
+  getUpcomingCoffees,
+  SCORE_DISCLAIMER,
+} from "@/features/catalog/data/catalog.repository";
 import { SectionHeading } from "@/features/site/components/SectionHeading";
 import { CoffeeCard } from "./CoffeeCard";
 
@@ -7,23 +11,39 @@ export function CatalogSection() {
   const upcoming = getUpcomingCoffees();
   return (
     <>
-      <section id="catalogo" aria-labelledby="catalogo-title" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
-        <SectionHeading
-          id="catalogo-title"
-          eyebrow="Catálogo disponible"
-          title="Tres cafés, tres lecturas del origen."
-          intro="Todos se presentan como café en grano, en formato de 1 kg."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {coffees.map((c) => (
-            <CoffeeCard key={c.slug} coffee={c} />
-          ))}
+      <section
+        id="cafes"
+        aria-labelledby="catalogo-title"
+        className="relative overflow-hidden bg-[#f8f2e8]"
+      >
+        <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+          <SectionHeading
+            id="catalogo-title"
+            eyebrow="Nuestros cafés"
+            title="Orígenes que cuentan una historia."
+            intro="Cafés en grano de 1 kg, seleccionados por su procedencia y perfil sensorial."
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {coffees.map((c) => (
+              <CoffeeCard key={c.slug} coffee={c} />
+            ))}
+          </div>
+          <p className="mt-8 text-xs text-muted-foreground">{SCORE_DISCLAIMER}</p>
+          <div className="mt-14 grid gap-6 border-t border-border pt-10 lg:grid-cols-[.75fr_1.25fr]">
+            <p className="eyebrow text-gold-ink">Cómo leer un café VÉRTICE</p>
+            <p className="max-w-3xl leading-relaxed text-muted-foreground">
+              El país, la región, la variedad y el proceso ayudan a entender el recorrido de cada
+              café. Las notas sensoriales son una guía para anticipar lo que puede expresar en taza.
+            </p>
+          </div>
         </div>
-        <p className="mt-8 text-xs text-muted-foreground">Los puntajes son informados por el proveedor. {SCORE_DISCLAIMER.split(". ")[1]}</p>
       </section>
 
-      <section aria-labelledby="proximamente-title" className="border-y border-dashed border-input">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section
+        aria-labelledby="proximamente-title"
+        className="border-y border-border bg-background"
+      >
+        <div className="mx-auto max-w-7xl px-5 py-18 md:px-8 md:py-24">
           <SectionHeading
             id="proximamente-title"
             eyebrow="Próximamente"
@@ -48,4 +68,3 @@ export function CatalogSection() {
     </>
   );
 }
-

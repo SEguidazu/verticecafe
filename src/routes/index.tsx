@@ -2,9 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/features/site/components/SiteHeader";
 import { Hero } from "@/features/site/components/Hero";
 import { Essence } from "@/features/site/components/Essence";
-import { ReadingGuide } from "@/features/site/components/ReadingGuide";
 import { CatalogSection } from "@/features/catalog/components/CatalogSection";
-import { OriginToCup } from "@/features/site/components/OriginToCup";
 import { Professionals } from "@/features/site/components/Professionals";
 import { ContactSection } from "@/features/contact/components/ContactSection";
 import { SiteFooter } from "@/features/site/components/SiteFooter";
@@ -31,16 +29,17 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <a href="#contenido" className="sr-only z-50 bg-background px-4 py-3 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+      <a
+        href="#contenido"
+        className="sr-only z-50 bg-background px-4 py-3 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
         Saltar al contenido
       </a>
       <SiteHeader />
       <main id="contenido">
         <Hero />
         <Essence />
-        <ReadingGuide />
         <CatalogSection />
-        <OriginToCup />
         <Professionals />
         <ContactSection />
       </main>
@@ -48,4 +47,3 @@ function Index() {
     </>
   );
 }
-
